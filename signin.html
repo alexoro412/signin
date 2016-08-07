@@ -22,26 +22,79 @@
       background-repeat:no-repeat;
       background-size: cover;
   }
+
+  .surprise{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+  }
   </style>
     <div id="image"></div>
     <div style="height:20vh;"></div>
     <div style="z-index:11;">
       <div class="col-sm-4 col-sm-offset-4" align="center">
-        <!-- <iframe src="https://docs.google.com/a/kentdenver.org/forms/d/e/1FAIpQLScjT-OCAuvl12rkdcVac41NEB7EdA5mTlgdLPrhh4_egkhmfw/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0" id="gform">Loading...</iframe> -->
-        <a href="https://goo.gl/forms/nAgUpdnHHHl5xNHZ2"><button class="btn btn-primary btn-lg">Tutor Sign-in</button></a>
+        <iframe class="surprise" id="tutor" src="https://docs.google.com/a/kentdenver.org/forms/d/e/1FAIpQLScjT-OCAuvl12rkdcVac41NEB7EdA5mTlgdLPrhh4_egkhmfw/viewform?embedded=true" width="1024" height="768" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+        <button class="btn btn-primary btn-lg" id="tutor-btn">Tutor Sign-in</button>
+        <button class="surprise btn btn-primary btn-lg" id="tutor-close">Close</button>
         <br/>
         <div style="height:8vh;"></div>
-        <a href="http://www.kentdenver.org"><button class="btn btn-primary btn-lg">Writing Center Checkout</button></a>
-        <!-- <script>
-          setInterval(function(){
-            console.log("checking");
-            if(document.getElementById('gform').contentDocument.getElementsByClassName("freebirdFormviewerViewResponseConfirmationMessage").length > 0){
-              // reload
-              console.log("found");
-              document.getElementById('gform').src = document.getElementById('gform').src;
+        <iframe class="surprise" id="writing" src="https://docs.google.com/a/kentdenver.org/forms/d/e/1FAIpQLScAoQgL02FDlyzrQglhhDidO2-mTwlPMOmZMcZYfB_gMng9ow/viewform?embedded=true" width="1024" height="768" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+        <button class="btn btn-primary btn-lg" id="writing-btn">Writing Center Checkout</button>
+        <button class="surprise btn btn-primary btn-lg" id="writing-close">Close</button>
+
+        <script>
+          var config = ['tutor', 'writing'];
+
+          var i2 = 0;
+
+          var confirms = {};
+
+          for(i2 = 0; i2 < config.length; i2++){
+            var i = i2;
+            const id = config[i];
+            // console.log(i);
+            document.getElementById(id+'-btn').onclick = function(){
+              // console.log(id + " " + i);
+              document.getElementById(id).style.display = "block";
+              document.getElementById(id+'-close').style.display = "block";
             }
-          }, 10000);
-        </script> -->
+
+            document.getElementById(id+'-close').onclick = function(){
+              document.getElementById(id).style.display = "none";
+              document.getElementById(id+'-close').style.display = "none";
+            }
+            confirms[id] = true;
+
+            document.getElementById(config[i]).addEventListener('load', () => {
+              console.log(id + " load detected");
+              // console.log(confirms[id]);
+              confirms[id] = !confirms[id];
+              console.log(id + " on confirm page? : " + confirms[id])
+              // console.log(confirms[id]);
+              if(confirms[id]){
+                document.getElementById(id).style.display = "none";
+                document.getElementById(id+'-close').style.display = "none;"
+                document.getElementById(id).src = document.getElementById(id).src;
+              }
+            });
+          }
+
+          // function tutor(){
+          //   document.getElementById('gform').style.display = "block";
+          // }
+          //
+          // var isOnConfirmPage = true;
+          //
+          // document.getElementById('gform').addEventListener('load', () => {
+          //   console.log("IT'S ALIVE");
+          //   isOnConfirmPage = !isOnConfirmPage;
+          //   if(isOnConfirmPage){
+          //     document.getElementById('gform').style.display = "none";
+          //     document.getElementById('gform').src = document.getElementById('gform').src;
+          //   }
+          // });
+        </script>
       </div>
     </div>
   </body>
