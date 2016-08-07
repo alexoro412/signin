@@ -31,9 +31,15 @@
   }
   </style>
     <div id="image"></div>
+    <div class="col-sm-2 col-sm-offset-5" style="position:fixed;">
+      <div id="alert-holder" class="alert alert-success" style="display:none;">
+        <span id="alert-content"><strong>Success<strong></span>
+      </div>
+    </div>
     <div style="height:20vh;"></div>
     <div style="z-index:11;">
       <div class="col-sm-4 col-sm-offset-4" align="center">
+
         <iframe class="surprise" id="tutor" src="https://docs.google.com/a/kentdenver.org/forms/d/e/1FAIpQLScjT-OCAuvl12rkdcVac41NEB7EdA5mTlgdLPrhh4_egkhmfw/viewform?embedded=true" width="1024" height="768" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
         <button class="btn btn-primary btn-lg" id="tutor-btn">Tutor Sign-in</button>
         <button class="surprise btn btn-primary btn-lg" id="tutor-close">Close</button>
@@ -50,6 +56,8 @@
 
           var confirms = {};
 
+          var alertTimeout = null;
+
           for(i2 = 0; i2 < config.length; i2++){
             var i = i2;
             const id = config[i];
@@ -58,6 +66,8 @@
               // console.log(id + " " + i);
               document.getElementById(id).style.display = "block";
               document.getElementById(id+'-close').style.display = "block";
+              clearTimeout(alertTimeout);
+              document.getElementById('alert-holder').style.display = "none";
             }
 
             document.getElementById(id+'-close').onclick = function(){
@@ -76,24 +86,13 @@
                 document.getElementById(id).style.display = "none";
                 document.getElementById(id+'-close').style.display = "none";
                 document.getElementById(id).src = document.getElementById(id).src;
+                document.getElementById('alert-holder').style.display = "block";
+                alertTimeout = setTimeout(() => {
+                  document.getElementById('alert-holder').style.display = "none";
+                }, 3000);
               }
             });
           }
-
-          // function tutor(){
-          //   document.getElementById('gform').style.display = "block";
-          // }
-          //
-          // var isOnConfirmPage = true;
-          //
-          // document.getElementById('gform').addEventListener('load', () => {
-          //   console.log("IT'S ALIVE");
-          //   isOnConfirmPage = !isOnConfirmPage;
-          //   if(isOnConfirmPage){
-          //     document.getElementById('gform').style.display = "none";
-          //     document.getElementById('gform').src = document.getElementById('gform').src;
-          //   }
-          // });
         </script>
       </div>
     </div>
