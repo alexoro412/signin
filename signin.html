@@ -77,7 +77,7 @@
             }
             confirms[id] = true;
 
-            document.getElementById(config[i]).addEventListener('load', () => {
+            document.getElementById(config[i]).addEventListener('load', function() {
               console.log(id + " load detected");
               // console.log(confirms[id]);
               confirms[id] = !confirms[id];
