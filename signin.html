@@ -88,7 +88,7 @@
                 document.getElementById(id+'-close').style.display = "none";
                 document.getElementById(id).src = document.getElementById(id).src;
                 document.getElementById('alert-holder').style.display = "block";
-                alertTimeout = setTimeout(() => {
+                alertTimeout = setTimeout(function(){
                   document.getElementById('alert-holder').style.display = "none";
                 }, 3000);
               }
