@@ -64,29 +64,32 @@
             var id = config[i];
             // console.log(i);
             document.getElementById(id+'-btn').onclick = function(){
+              var id2 = id;
               // console.log(id + " " + i);
-              document.getElementById(id).style.display = "block";
-              document.getElementById(id+'-close').style.display = "block";
+              document.getElementById(id2).style.display = "block";
+              document.getElementById(id2+'-close').style.display = "block";
               clearTimeout(alertTimeout);
               document.getElementById('alert-holder').style.display = "none";
             }
 
             document.getElementById(id+'-close').onclick = function(){
-              document.getElementById(id).style.display = "none";
-              document.getElementById(id+'-close').style.display = "none";
+              var id2 = id;
+              document.getElementById(id2).style.display = "none";
+              document.getElementById(id2+'-close').style.display = "none";
             }
             confirms[id] = true;
 
             document.getElementById(config[i]).addEventListener('load', function() {
-              console.log(id + " load detected");
+              var id2 = id
+              console.log(id2 + " load detected");
               // console.log(confirms[id]);
-              confirms[id] = !confirms[id];
-              console.log(id + " on confirm page? : " + confirms[id])
+              confirms[id2] = !confirms[id2];
+              console.log(id2 + " on confirm page? : " + confirms[id2])
               // console.log(confirms[id]);
-              if(confirms[id]){
-                document.getElementById(id).style.display = "none";
-                document.getElementById(id+'-close').style.display = "none";
-                document.getElementById(id).src = document.getElementById(id).src;
+              if(confirms[id2]){
+                document.getElementById(id2).style.display = "none";
+                document.getElementById(id2+'-close').style.display = "none";
+                document.getElementById(id2).src = document.getElementById(id2).src;
                 document.getElementById('alert-holder').style.display = "block";
                 alertTimeout = setTimeout(function(){
                   document.getElementById('alert-holder').style.display = "none";
