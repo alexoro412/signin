@@ -64,7 +64,7 @@
             var id = config[i];
             // console.log(i);
             document.getElementById(id+'-btn').onclick = function(){
-              var id2 = id;
+              var id2 = id + "";
               // console.log(id + " " + i);
               document.getElementById(id2).style.display = "block";
               document.getElementById(id2+'-close').style.display = "block";
@@ -73,14 +73,14 @@
             }
 
             document.getElementById(id+'-close').onclick = function(){
-              var id2 = id;
+              var id2 = id + "";
               document.getElementById(id2).style.display = "none";
               document.getElementById(id2+'-close').style.display = "none";
             }
             confirms[id] = true;
 
             document.getElementById(config[i]).addEventListener('load', function() {
-              var id2 = id
+              var id2 = id + "";
               console.log(id2 + " load detected");
               // console.log(confirms[id]);
               confirms[id2] = !confirms[id2];
