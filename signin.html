@@ -59,44 +59,112 @@
 
           var alertTimeout = null;
 
-          for(i2 = 0; i2 < config.length; i2++){
-            var i = i2;
-            var id = config[i];
-            // console.log(i);
-            document.getElementById(id+'-btn').onclick = function(){
-              var id2 = id + "";
-              // console.log(id + " " + i);
-              document.getElementById(id2).style.display = "block";
-              document.getElementById(id2+'-close').style.display = "block";
-              clearTimeout(alertTimeout);
-              document.getElementById('alert-holder').style.display = "none";
-            }
+          // for(i2 = 0; i2 < config.length; i2++){
+          //   var i = i2;
+          //   var id = config[i];
+          //   // console.log(i);
+          //   document.getElementById(id+'-btn').onclick = function(){
+          //     var id2 = id + "";
+          //     // console.log(id + " " + i);
+          //     document.getElementById(id2).style.display = "block";
+          //     document.getElementById(id2+'-close').style.display = "block";
+          //     clearTimeout(alertTimeout);
+          //     document.getElementById('alert-holder').style.display = "none";
+          //   }
+          //
+          //   document.getElementById(id+'-close').onclick = function(){
+          //     var id2 = id + "";
+          //     document.getElementById(id2).style.display = "none";
+          //     document.getElementById(id2+'-close').style.display = "none";
+          //   }
+          //   confirms[id] = true;
+          //
+          //   document.getElementById(id).addEventListener('load', function() {
+          //     var id2 = id + "";
+          //     console.log(id2 + " load detected");
+          //     // console.log(confirms[id]);
+          //     confirms[id2] = !confirms[id2];
+          //     console.log(id2 + " on confirm page? : " + confirms[id2])
+          //     // console.log(confirms[id]);
+          //     if(confirms[id2]){
+          //       document.getElementById(id2).style.display = "none";
+          //       document.getElementById(id2+'-close').style.display = "none";
+          //       document.getElementById(id2).src = document.getElementById(id2).src;
+          //       document.getElementById('alert-holder').style.display = "block";
+          //       alertTimeout = setTimeout(function(){
+          //         document.getElementById('alert-holder').style.display = "none";
+          //       }, 3000);
+          //     }
+          //   });
+          // }
 
-            document.getElementById(id+'-close').onclick = function(){
-              var id2 = id + "";
+          document.getElementById('tutor-btn').onclick = function(){
+            var id2 = 'tutor';
+            // console.log(id + " " + i);
+            document.getElementById(id2).style.display = "block";
+            document.getElementById(id2+'-close').style.display = "block";
+            clearTimeout(alertTimeout);
+            document.getElementById('alert-holder').style.display = "none";
+          }
+
+          document.getElementById('tutor-close').onclick = function(){
+            var id2 = 'tutor';
+            document.getElementById(id2).style.display = "none";
+            document.getElementById(id2+'-close').style.display = "none";
+          }
+          confirms['tutor'] = true;
+          confirms['writing'] = true;
+
+          document.getElementById('tutor').addEventListener('load', function() {
+            var id2 = 'tutor';
+            console.log(id2 + " load detected");
+            // console.log(confirms[id]);
+            confirms[id2] = !confirms[id2];
+            console.log(id2 + " on confirm page? : " + confirms[id2])
+            // console.log(confirms[id]);
+            if(confirms[id2]){
               document.getElementById(id2).style.display = "none";
               document.getElementById(id2+'-close').style.display = "none";
+              document.getElementById(id2).src = document.getElementById(id2).src;
+              document.getElementById('alert-holder').style.display = "block";
+              alertTimeout = setTimeout(function(){
+                document.getElementById('alert-holder').style.display = "none";
+              }, 3000);
             }
-            confirms[id] = true;
+          });
 
-            document.getElementById(id).addEventListener('load', function() {
-              var id2 = id + "";
-              console.log(id2 + " load detected");
-              // console.log(confirms[id]);
-              confirms[id2] = !confirms[id2];
-              console.log(id2 + " on confirm page? : " + confirms[id2])
-              // console.log(confirms[id]);
-              if(confirms[id2]){
-                document.getElementById(id2).style.display = "none";
-                document.getElementById(id2+'-close').style.display = "none";
-                document.getElementById(id2).src = document.getElementById(id2).src;
-                document.getElementById('alert-holder').style.display = "block";
-                alertTimeout = setTimeout(function(){
-                  document.getElementById('alert-holder').style.display = "none";
-                }, 3000);
-              }
-            });
+          document.getElementById('writing-btn').onclick = function(){
+            var id2 = 'writing';
+            // console.log(id + " " + i);
+            document.getElementById(id2).style.display = "block";
+            document.getElementById(id2+'-close').style.display = "block";
+            clearTimeout(alertTimeout);
+            document.getElementById('alert-holder').style.display = "none";
           }
+
+          document.getElementById('writing-close').onclick = function(){
+            var id2 = 'writing';
+            document.getElementById(id2).style.display = "none";
+            document.getElementById(id2+'-close').style.display = "none";
+          }
+
+          document.getElementById('writing').addEventListener('load', function() {
+            var id2 = 'writing';
+            console.log(id2 + " load detected");
+            // console.log(confirms[id]);
+            confirms[id2] = !confirms[id2];
+            console.log(id2 + " on confirm page? : " + confirms[id2])
+            // console.log(confirms[id]);
+            if(confirms[id2]){
+              document.getElementById(id2).style.display = "none";
+              document.getElementById(id2+'-close').style.display = "none";
+              document.getElementById(id2).src = document.getElementById(id2).src;
+              document.getElementById('alert-holder').style.display = "block";
+              alertTimeout = setTimeout(function(){
+                document.getElementById('alert-holder').style.display = "none";
+              }, 3000);
+            }
+          });
         </script>
       </div>
     </div>
